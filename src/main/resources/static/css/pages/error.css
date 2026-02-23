@@ -1,0 +1,6 @@
+﻿body { margin: 0; font-family: Arial, sans-serif; background: #f4f7fb; color: #0f172a; }
+        .wrap { max-width: 720px; margin: 50px auto; padding: 0 16px; }
+        .card { background: #fff; border: 1px solid #dbe5f3; border-radius: 12px; padding: 22px; box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08); }
+        h2 { margin-top: 0; }
+        p { line-height: 1.5; }
+        a { display: inline-block; margin-top: 10px; text-decoration: none; background: #1d4ed8; color: #fff; padding: 10px 14px; border-radius: 8px; }

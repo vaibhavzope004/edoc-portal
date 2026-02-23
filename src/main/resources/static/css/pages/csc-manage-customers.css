@@ -1,0 +1,53 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap');
+        :root {
+            --bg-a: #eef5ff;
+            --bg-b: #f8fbff;
+            --surface: #ffffff;
+            --line: #dbe6f7;
+            --text: #1e293b;
+            --muted: #64748b;
+            --ok: #166534;
+            --danger: #b91c1c;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: "Manrope", "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 12% 8%, #dbeafe 0%, transparent 28%),
+                radial-gradient(circle at 92% 10%, #bfdbfe 0%, transparent 28%),
+                linear-gradient(130deg, var(--bg-a), var(--bg-b));
+            min-height: 100vh;
+        }
+        .topbar { background: linear-gradient(90deg, #2563eb, #1e40af); box-shadow: 0 10px 22px rgba(30, 64, 175, 0.24); }
+        .topbar img { width: 100%; display: block; }
+        .wrap { max-width: 1080px; margin: 22px auto; padding: 0 18px; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .header-actions { display: flex; gap: 10px; }
+        .btn { text-decoration: none; background: linear-gradient(135deg, #1f2937, #111827); color: #fff; padding: 12px 14px; border-radius: 10px; font-weight: 700; }
+        .btn-manual { background: linear-gradient(135deg, #2563eb, #1d4ed8); border: 0; cursor: pointer; font: inherit; }
+        .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 10px 24px rgba(30, 41, 59, 0.08); overflow: hidden; margin-top: 14px; }
+        .panel-title { margin: 0; padding: 12px 14px; background: #f8fbff; border-bottom: 1px solid var(--line); }
+        .notice { padding: 10px 12px; border-radius: 10px; margin-bottom: 10px; font-weight: 700; }
+        .notice.success { background: #dcfce7; color: #166534; }
+        .notice.error { background: #fee2e2; color: #991b1b; }
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 780px; }
+        th, td { padding: 13px 12px; border-bottom: 1px solid #e8edf7; text-align: left; font-size: 0.96rem; }
+        th { background: #edf2ff; }
+        .approve { text-decoration: none; background: var(--ok); color: #fff; padding: 8px 11px; border-radius: 8px; font-size: 13px; font-weight: 700; }
+        .deactivate { text-decoration: none; background: #b45309; color: #fff; padding: 8px 11px; border-radius: 8px; font-size: 13px; font-weight: 700; }
+        .remove { background: var(--danger); }
+        .section-note { color: var(--muted); margin: 4px 0 0; font-size: 0.92rem; }
+        .form-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; padding: 12px 14px 14px; }
+        .field { width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px 12px; font: inherit; }
+        .footer { margin-top: 20px; background: linear-gradient(90deg, #2563eb, #1e40af); color: #fff; padding: 14px; text-align: center; font-weight: 600; }
+        @media (max-width: 768px) {
+            .wrap { padding: 0 12px; }
+            .header { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .header-actions { width: 100%; flex-direction: column; }
+            .btn { width: 100%; text-align: center; }
+            .form-grid { grid-template-columns: 1fr; }
+            table { min-width: 680px; }
+        }

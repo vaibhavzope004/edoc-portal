@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit CSC User</title>
+        
+
+    <link rel="stylesheet" th:href="@{/css/pages/admin-csc-edit.css}" href="/css/pages/admin-csc-edit.css">
+</head>
+<body>
+<div class="box">
+    <h2>Edit CSC User / Request</h2>
+    <form th:action="@{'/admin/csc-users/edit/' + ${cscRequest.id}}" method="post" class="grid">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <input class="field" type="text" name="cscPortalName" th:value="${cscRequest.cscPortalName}" placeholder="CSC Portal Name" required>
+        <input class="field" type="text" name="ownerName" th:value="${cscRequest.ownerName}" placeholder="Owner Name" required>
+        <input class="field muted" type="text" name="cscId" th:value="${cscRequest.cscId}" readonly required>
+        <input class="field" type="text" name="mobileNumber" th:value="${cscRequest.mobileNumber}" placeholder="Mobile Number" pattern="[0-9]{10}" maxlength="10" required>
+        <input class="field full" type="text" name="cscCenterAddress" th:value="${cscRequest.cscCenterAddress}" placeholder="CSC Center Address" required>
+        <input class="field" type="email" name="usernameEmail" th:value="${cscRequest.usernameEmail}" placeholder="Username (Email)" required>
+        <input class="field" type="password" name="password" placeholder="Enter new password (optional)">
+        <div class="actions full">
+            <button class="btn save" type="submit">Update</button>
+            <a class="btn back" th:href="@{/admin/dashboard}">Back</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+
+

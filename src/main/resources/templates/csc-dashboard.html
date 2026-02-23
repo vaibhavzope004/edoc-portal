@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSC Dashboard</title>
+        
+
+    <link rel="stylesheet" th:href="@{/css/pages/csc-dashboard.css}" href="/css/pages/csc-dashboard.css">
+</head>
+<body>
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<div class="wrap">
+    <div class="header">
+        <h2>CSC Dashboard</h2>
+        <a class="btn" th:href="@{/csc/logout}">Logout</a>
+    </div>
+
+    <div th:if="${success}" class="notice success" th:text="${success}">Success</div>
+    <div th:if="${error}" class="notice error" th:text="${error}">Error</div>
+
+    <div class="card-container">
+        <a class="card card-link" th:href="@{/csc/manage-customers}">
+            <img src="/images/Customer.png" th:src="@{/images/Customer.png}" alt="Manage Customers" class="card-logo">
+            <h3>Manage Customers</h3>
+            <p>View customer requests and activate, deactivate, or delete customers.</p>
+        </a>
+
+        <a class="card card-link" th:href="@{/csc/manage-applications}">
+            <img src="/images/Admin.png" th:src="@{/images/Admin.png}" alt="Manage Applications" class="card-logo">
+            <h3>Manage Applications</h3>
+            <p>View customer applications, open details, review documents, and update status.</p>
+        </a>
+    </div>
+</div>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>
+
+

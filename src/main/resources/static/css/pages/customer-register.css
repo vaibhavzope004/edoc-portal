@@ -1,0 +1,49 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap');
+        :root {
+            --bg-1: #eafbf5;
+            --bg-2: #f7fffb;
+            --surface: #ffffff;
+            --line: #cbeede;
+            --text: #15322a;
+            --muted: #5f7f74;
+            --brand: #0f766e;
+            --brand-2: #115e59;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: "Manrope", "Segoe UI", sans-serif;
+            color: var(--text);
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 12% 8%, #bbf7d0 0%, transparent 28%),
+                radial-gradient(circle at 88% 10%, #a7f3d0 0%, transparent 26%),
+                linear-gradient(130deg, var(--bg-1), var(--bg-2));
+            display: flex;
+            flex-direction: column;
+        }
+        .topbar { background: linear-gradient(90deg, #0f766e, #115e59); box-shadow: 0 10px 22px rgba(15, 118, 110, 0.24); }
+        .topbar img { width: 100%; display: block; }
+        .main { flex: 1; display: grid; place-items: center; padding: 26px 16px; }
+        .panel {
+            width: min(620px, 100%);
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            box-shadow: 0 14px 34px rgba(15, 118, 110, 0.16);
+            padding: 24px;
+        }
+        .eyebrow { margin: 0 0 4px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.35px; font-weight: 700; }
+        h2 { margin: 0 0 14px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .field { width: 100%; padding: 11px; border: 1px solid #cfe5da; border-radius: 10px; font: inherit; }
+        .field:focus { outline: 2px solid rgba(15, 118, 110, 0.2); border-color: #6ee7b7; }
+        .full { grid-column: 1 / -1; }
+        .btn { width: 100%; border: 0; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; padding: 11px; border-radius: 10px; cursor: pointer; font-weight: 800; }
+        .msg { margin-bottom: 10px; padding: 10px; border-radius: 10px; font-size: 14px; }
+        .ok { background: #dcfce7; color: #166534; }
+        .err { background: #fee2e2; color: #991b1b; }
+        .links { margin-top: 12px; text-align: center; }
+        .links a { color: #0f766e; font-weight: 700; text-decoration: none; }
+        .footer { background: linear-gradient(90deg, #0f766e, #115e59); color: #fff; padding: 14px; text-align: center; font-weight: 600; }
+        @media (max-width: 680px) { .grid { grid-template-columns: 1fr; } }

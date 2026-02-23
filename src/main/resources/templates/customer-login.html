@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWix+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8v+7K1S2+g8wYfP5Bf7Y5R5YhX+YpEg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+
+    <link rel="stylesheet" th:href="@{/css/pages/customer-login.css}" href="/css/pages/customer-login.css">
+</head>
+<body>
+<div class="topbar">
+    <img src="/images/DashbordCopy.png" th:src="@{/images/DashbordCopy.png}" alt="E-DocServices Header">
+</div>
+
+<main class="main">
+    <div class="panel">
+        <h2>Customer Login</h2>
+        <div th:if="${success}" class="msg ok" th:text="${success}">Success</div>
+        <div th:if="${error}" class="msg err" th:text="${error}">Error</div>
+        <div th:if="${param.error}" class="msg err">Invalid credentials or account pending CSC approval.</div>
+        <div th:if="${param.invalidCustomerUser}" class="msg err">Invalid Customer user.</div>
+        <div th:if="${param.logout}" class="msg ok">Logged out successfully.</div>
+        <form th:action="@{/login}" method="post">
+            <input type="hidden" name="portal" value="customer">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <input class="field" type="email" name="username" placeholder="Email" required>
+            <div class="password-wrapper">
+                <input class="field" id="password" type="password" name="password" placeholder="Enter Password" required>
+                <button class="toggle-password" type="button" id="togglePasswordBtn" aria-label="Show password" onclick="togglePassword()">
+                    <i id="togglePasswordIcon" class="fa-solid fa-eye-slash" aria-hidden="true"></i>
+                </button>
+            </div>
+            <button class="btn" type="submit">Login</button>
+        </form>
+        <div class="links">New user? <a th:href="@{/register}" href="/register">Register here</a></div>
+        <div class="links"><a th:href="@{/}" href="/">Back to Home</a></div>
+    </div>
+</main>
+
+<div class="footer">
+    <b>Contact Us:</b><br>
+    Vaibhav Zope<br>
+    Muktainagar, Maharashtra - 425306
+</div>
+<script>
+    function togglePassword() {
+        var passwordField = document.getElementById("password");
+        var toggleIcon = document.getElementById("togglePasswordIcon");
+        var toggleBtn = document.getElementById("togglePasswordBtn");
+        if (!passwordField) return;
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            if (toggleIcon) {
+                toggleIcon.classList.remove("fa-eye-slash");
+                toggleIcon.classList.add("fa-eye");
+            }
+            if (toggleBtn) {
+                toggleBtn.setAttribute("aria-label", "Hide password");
+            }
+        } else {
+            passwordField.type = "password";
+            if (toggleIcon) {
+                toggleIcon.classList.remove("fa-eye");
+                toggleIcon.classList.add("fa-eye-slash");
+            }
+            if (toggleBtn) {
+                toggleBtn.setAttribute("aria-label", "Show password");
+            }
+        }
+    }
+</script>
+</body>
+</html>
+
+

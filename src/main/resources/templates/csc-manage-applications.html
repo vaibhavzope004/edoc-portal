@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Applications - CSC</title>
+        
+
+    <link rel="stylesheet" th:href="@{/css/pages/csc-manage-applications.css}" href="/css/pages/csc-manage-applications.css">
+</head>
+<body>
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<div class="wrap">
+    <div class="header">
+        <h2>Manage Applications</h2>
+        <a class="btn" th:href="@{/csc/dashboard}">Back to Dashboard</a>
+    </div>
+    <div th:if="${success}" class="notice success" th:text="${success}">Success</div>
+    <div th:if="${error}" class="notice error" th:text="${error}">Error</div>
+
+    <div class="panel">
+        <h3 class="panel-title">Pending Applications</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>Application ID</th>
+                    <th>Customer Name</th>
+                    <th>Service Name</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${#lists.isEmpty(pendingList)}">
+                    <td colspan="5" style="text-align:center;">No pending applications.</td>
+                </tr>
+                <tr th:each="app : ${pendingList}">
+                    <td th:text="${app.id}">1</td>
+                    <td th:text="${app.customerName}">Customer Name</td>
+                    <td th:text="${app.serviceName}">Income Certificate</td>
+                    <td th:text="${app.createdAt != null ? #temporals.format(app.createdAt, 'dd-MM-yyyy HH:mm') : '-'}">13-02-2026 10:30</td>
+                    <td><a class="action-link" th:href="@{/csc/application/{id}(id=${app.id})}">Open</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h3 class="panel-title">Applied Applications</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>Application ID</th>
+                    <th>Customer Name</th>
+                    <th>Service Name</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${#lists.isEmpty(appliedList)}">
+                    <td colspan="5" style="text-align:center;">No applied applications.</td>
+                </tr>
+                <tr th:each="app : ${appliedList}">
+                    <td th:text="${app.id}">1</td>
+                    <td th:text="${app.customerName}">Customer Name</td>
+                    <td th:text="${app.serviceName}">Income Certificate</td>
+                    <td th:text="${app.createdAt != null ? #temporals.format(app.createdAt, 'dd-MM-yyyy HH:mm') : '-'}">13-02-2026 10:30</td>
+                    <td><a class="action-link" th:href="@{/csc/application/{id}(id=${app.id})}">Open</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h3 class="panel-title">Successed Applications</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>Application ID</th>
+                    <th>Customer Name</th>
+                    <th>Service Name</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${#lists.isEmpty(successList)}">
+                    <td colspan="5" style="text-align:center;">No successed applications.</td>
+                </tr>
+                <tr th:each="app : ${successList}">
+                    <td th:text="${app.id}">1</td>
+                    <td th:text="${app.customerName}">Customer Name</td>
+                    <td th:text="${app.serviceName}">Income Certificate</td>
+                    <td th:text="${app.createdAt != null ? #temporals.format(app.createdAt, 'dd-MM-yyyy HH:mm') : '-'}">13-02-2026 10:30</td>
+                    <td><a class="action-link" th:href="@{/csc/application/{id}(id=${app.id})}">Open</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>
+
+

@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Application Form - CSC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+        
+
+    <link rel="stylesheet" th:href="@{/css/pages/apply-service.css}" href="/css/pages/apply-service.css">
+</head>
+<body>
+
+<div th:replace="~{fragments/layout :: header}"></div>
+
+<div class="wrap">
+    <a class="btn btn-back" th:href="@{/customer/dashboard}">Back to Dashboard</a>
+    <h2>Application Form</h2>
+
+    <div th:if="${success}" class="msg ok" th:text="${success}"></div>
+    <div th:if="${error}" class="msg err" th:text="${error}"></div>
+
+    <div class="card">
+        <h3>Application Form Details</h3>
+
+        <form th:action="@{/customer/apply}" method="get">
+            <label for="serviceType">Service Type</label>
+            <select id="serviceType" class="field" name="serviceType" required>
+                <option value="">-- Select Document --</option>
+                <option th:each="s : ${services}" th:value="${s}" th:text="${s}" th:selected="${s == selectedService}"></option>
+            </select>
+            <div style="margin-top:10px;">
+                <button class="btn btn-update" type="submit">Load Required Documents</button>
+            </div>
+        </form>
+
+        <div th:if="${selectedService != null and !#strings.isEmpty(selectedService)}" style="margin-top:14px;">
+            <p><b>Selected Service:</b> <span th:text="${selectedService}"></span></p>
+            <p class="service-title">Required Documents</p>
+            <ul class="required-docs" th:if="${requiredDocs != null and !#lists.isEmpty(requiredDocs)}">
+                <li th:each="doc : ${requiredDocs}" th:text="${doc}"></li>
+            </ul>
+            <p th:if="${requiredDocs == null or #lists.isEmpty(requiredDocs)}" style="color:#991b1b; font-weight:700;">
+                No required document config found for selected service.
+            </p>
+        </div>
+    </div>
+
+    <div class="card" th:if="${selectedService != null and !#strings.isEmpty(selectedService)}">
+        <h3>Applicant Information</h3>
+        <form th:action="@{/customer/apply}" method="post" enctype="multipart/form-data">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <input type="hidden" name="serviceType" th:value="${selectedService}" />
+
+            <div class="details-grid">
+                <div>
+                    <label for="name">Full Name</label>
+                    <input id="name" class="field" type="text" name="name" required />
+                </div>
+                <div>
+                    <label for="mobile">Mobile Number</label>
+                    <input id="mobile" class="field" type="text" name="mobile" pattern="[0-9]{10}" maxlength="10" required />
+                </div>
+            </div>
+
+            <h3>Upload Required Documents</h3>
+            <ul class="doc-list" th:if="${requiredDocs != null and !#lists.isEmpty(requiredDocs)}">
+                <li th:each="doc : ${requiredDocs}">
+                    <label th:text="${doc}"></label>
+                    <input class="field" type="file" name="documents" required />
+                </li>
+            </ul>
+
+            <label for="description">Description</label>
+            <textarea id="description" class="field" name="description" rows="4" placeholder="Enter additional details"></textarea>
+
+            <label style="font-weight:600; margin-top:12px;">
+                <input type="checkbox" name="paymentDone" value="true" required />
+                I confirm payment is completed
+            </label>
+
+            <button class="btn btn-update" type="submit" style="margin-top:12px;">Submit Application</button>
+        </form>
+    </div>
+</div>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>
+
+

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CSC Login</title>
+        
+
+    <link rel="stylesheet" th:href="@{/css/pages/csc-login.css}" href="/css/pages/csc-login.css">
+</head>
+<body>
+<div class="topbar">
+    <img src="/images/DashbordCopy.png" th:src="@{/images/DashbordCopy.png}" alt="E-DocServices Header">
+</div>
+
+<main class="main">
+    <div class="panel">
+        <h2>CSC User Login</h2>
+        <div th:if="${success}" class="msg ok" th:text="${success}">Success</div>
+        <div th:if="${error}" class="msg err" th:text="${error}">Error</div>
+        <div th:if="${param.error}" class="msg err">Invalid credentials or account not approved by admin.</div>
+        <div th:if="${param.invalidCscUser}" class="msg err">Invalid CSC user.</div>
+        <form th:action="@{/login}" method="post">
+            <input type="hidden" name="portal" value="csc">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <input class="field" type="email" name="username" placeholder="Email" required>
+            <div class="password-wrapper">
+                <input class="field" id="password" type="password" name="password" placeholder="Enter Password" required>
+                <span class="toggle-password" onclick="togglePassword()">👁</span>
+            </div>
+            <button class="btn" type="submit">Login</button>
+        </form>
+        <div class="links">New CSC user? <a th:href="@{/csc/register}" href="/csc/register">Register here</a></div>
+        <div class="links"><a th:href="@{/}" href="/">Back to Home</a></div>
+    </div>
+</main>
+
+<div class="footer">
+    <b>Contact Us:</b><br>
+    Vaibhav Zope<br>
+    Muktainagar, Maharashtra - 425306
+</div>
+<script>
+    function togglePassword() {
+        var passwordField = document.getElementById("password");
+        if (!passwordField) return;
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+        } else {
+            passwordField.type = "password";
+        }
+    }
+</script>
+</body>
+</html>
+
+
