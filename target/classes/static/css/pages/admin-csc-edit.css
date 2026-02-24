@@ -1,0 +1,12 @@
+﻿body { margin: 0; font-family: Arial, sans-serif; background: #f4f7ff; }
+        .box { max-width: 760px; margin: 36px auto; background: #fff; border-radius: 14px; box-shadow: 0 10px 24px rgba(0,0,0,0.12); padding: 22px; }
+        h2 { margin: 0 0 12px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .field { width: 100%; padding: 10px; border: 1px solid #d4dce8; border-radius: 8px; }
+        .full { grid-column: 1 / -1; }
+        .muted { background: #f1f5f9; color: #475569; }
+        .actions { margin-top: 12px; display: flex; gap: 10px; }
+        .btn { border: 0; text-decoration: none; padding: 10px 12px; border-radius: 8px; color: #fff; cursor: pointer; font-weight: 700; }
+        .save { background: #16a34a; }
+        .back { background: #334155; }
+        @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }

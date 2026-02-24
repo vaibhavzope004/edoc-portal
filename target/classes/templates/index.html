@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>E-DocServices Online Application Portal</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}" href="/css/index.css">
+</head>
+<body>
+<div class="topbar">
+    <!-- Top row -->
+    <table width="100%">
+        <tr>
+            <td align="left" valign="top">
+                <a th:href="@{/}" href="/">
+                    <h1><u>E-DocServices</u></h1>
+                </a>
+                <i>Issue your document without visiting the CSC Center.</i>
+            </td>
+            <td align="right" valign="top">
+                <table border="0" cellspacing="2" cellpadding="2">
+                    <tr>
+                        <td colspan="2" align="center">
+                            <img src="/images/Logo.png" th:src="@{/images/Logo.png}" alt="Logo Not Found" width="50" height="50" style="border:1px solid black;"><br>
+                            <b>Government of India</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="/images/Deva.jpg" th:src="@{/images/Deva.jpg}" alt="Image Not Found" width="80" height="80" style="border:1px solid black;">
+                        </td>
+                        <td>
+                            <img src="/images/images.jpg" th:src="@{/images/images.jpg}" alt="Image Not Found" width="80" height="80" style="border:1px solid black;">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="marquee-wrap">
+    <marquee bgcolor="white" onmouseover="this.stop();" onmouseout="this.start();">
+    <font color="blue">
+        Welcome to E-DocServices – Apply for documents online, track your status, and get quick updates from CSC admin. Fast, secure, and easy to use!
+    </font>
+</marquee>
+</div>
+
+<div class="main">
+    <h2>Online Application Portal</h2>
+    <div class="card-container">
+        <a class="card card-link" th:href="@{/admin/login}" href="/admin/login">
+            <img src="/images/Admin.png" th:src="@{/images/Admin.png}" alt="Admin" class="card-logo">
+            <h3>Admin Login</h3>
+            <p>Manage customer requests, process applications, and other services.</p>
+        </a>
+
+        <a class="card card-link" th:href="@{/csc/login}" href="/csc/login">
+            <img src="/images/Customer.png" th:src="@{/images/Customer.png}" alt="CSC" class="card-logo">
+            <h3>CSC Login</h3>
+            <p>Process customer applications and update service request status.</p>
+        </a>
+
+        <a class="card card-link" th:href="@{/login}" href="/login">
+            <img src="/images/Customer.png" th:src="@{/images/Customer.png}" alt="Customer" class="card-logo">
+            <h3>Customer Login</h3>
+            <p>Access your profile, apply for documents, and track your requests.</p>
+        </a>
+    </div>
+</div>
+
+<div class="footer">
+    <b>Contact Us:</b><br>
+    Vaibhav Zope<br>
+    Muktainagar, Maharashtra - 425306
+</div>
+</body>
+</html>
+

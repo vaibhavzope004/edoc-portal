@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login - E-DocServices</title>
+        
+
+    <link rel="stylesheet" th:href="@{/css/pages/admin-login.css}" href="/css/pages/admin-login.css">
+</head>
+<body>
+<div class="topbar">
+    <img src="/images/DashbordCopy.png" th:src="@{/images/DashbordCopy.png}" alt="E-DocServices Header">
+</div>
+
+<main class="main">
+    <div class="panel">
+        <h2>Admin Login</h2>
+        <form th:action="@{/login}" method="post">
+            <input type="hidden" name="portal" value="admin">
+            <input class="field" type="text" name="username" placeholder="Admin ID" required>
+            <div class="password-wrapper">
+                <input class="field" id="password" type="password" name="password" placeholder="Enter Password" required>
+                <span class="toggle-password" onclick="togglePassword()">👁</span>
+            </div>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <button class="btn" type="submit">Login</button>
+            <p th:if="${error}" class="error" th:text="${error}"></p>
+            <p th:if="${param.error}" class="error">Invalid admin credentials.</p>
+            <p th:if="${param.invalidAdminUser}" class="error">Invalid admin user.</p>
+        </form>
+        <a class="home" th:href="@{/}">Back to Home</a>
+    </div>
+</main>
+
+<div class="footer">
+    <b>Contact Us:</b><br>
+    Vaibhav Zope<br>
+    Muktainagar, Maharashtra - 425306
+</div>
+<script>
+    function togglePassword() {
+        var passwordField = document.getElementById("password");
+        if (!passwordField) return;
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+        } else {
+            passwordField.type = "password";
+        }
+    }
+</script>
+</body>
+</html>
+
+
